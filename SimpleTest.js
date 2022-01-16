@@ -34,7 +34,7 @@ class SimpleTest{
       let errorMessage;
       try{
         result = this.func(...test.params);
-        isSuccess = result===test.result;
+        isSuccess = JSON.stringify(result, null, "")===JSON.stringify(test.result, null, "") && (typeof result === typeof test.result);
       }catch(err){
         errorMessage = err.messsage;
         isSuccess = false;
@@ -42,7 +42,7 @@ class SimpleTest{
       
       if(isSuccess){
         stat.success.count++;
-        stat.success.log+=`test ${1+testNumber}: ${this.name}(${test.params}) OK, got: ${result}\n`;
+        stat.success.log+=`test ${1+testNumber}: ${this.name}(${JSON.strigify(test.params, null, "")}) OK, got: ${JSON.stringify(result, null, "")}\n`;
       }else{
         stat.falied.count++;
         stat.falied.log+=`test ${1+testNumber}: ${this.name}(${test.params}) Falied, expected: ${test.result} , got: ${result}${errorMessage!==undefined?"; Error: "+errorMessage:""}\n`;
