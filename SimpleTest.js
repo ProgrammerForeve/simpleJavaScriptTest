@@ -45,7 +45,7 @@ class SimpleTest{
         stat.success.log+=`test ${1+testNumber}: ${this.name}(${JSON.stringify(test.params, null, "")}) OK, got: ${JSON.stringify(result, null, "")}\n`;
       }else{
         stat.falied.count++;
-        stat.falied.log+=`test ${1+testNumber}: ${this.name}(${JSON.stringify(test.params, null, ""}) Falied, expected: ${JSON.stringify(test.result, null, "")} , got: ${JSON.stringify(result, null, "")}${errorMessage!==undefined?"; Error: "+errorMessage:""}\n`;
+        stat.falied.log+=`test ${1+testNumber}: ${this.name}(${JSON.stringify(test.params, null, "")}) Falied, expected: ${JSON.stringify(test.result, null, "")} , got: ${JSON.stringify(result, null, "")}${errorMessage!==undefined?"; Error: "+errorMessage:""}\n`;
       }; 
     });  
     
